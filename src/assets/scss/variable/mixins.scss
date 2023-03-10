@@ -1,0 +1,204 @@
+@use 'sass:math';
+
+@function ptr($a, $b) {
+  @return percentage(math.div(ceil(math.div($a, $b) * 100000000), 100000000));
+}
+
+@function rem($a) {
+  @return math.div(ceil(math.div($a, 75) * 1000000), 1000000) * 1rem;
+}
+
+@mixin hide {
+  visibility: hidden;
+  opacity: 0;
+}
+@mixin show($s) {
+  visibility: visible;
+  opacity: $s;
+}
+
+@mixin splitLine($left, $right, $bgcolor: rgba($color: #333333, $alpha: 0.1)) {
+  &::after {
+    content: '';
+    position: absolute;
+    left: $left;
+    right: $right;
+    bottom: 0;
+    height: 1px;
+    background-color: $bgcolor;
+    transform: scaleY(0.5);
+  }
+}
+
+@mixin singleLine {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin multiLine($n) {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $n;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow: hidden;
+}
+
+@mixin gridCalc($total, $space) {
+  .lc {
+    &-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: stretch;
+      justify-content: flex-start;
+      margin-right: -$space;
+      margin-left: -$space;
+
+      & > [class*='lc-col-'] {
+        padding-left: $space;
+        padding-right: $space;
+        box-sizing: border-box;
+      }
+    }
+
+    @for $var from 1 through $total {
+      &-col-#{$var} {
+        width: ptr($var, $total);
+      }
+    }
+  }
+}
+
+@mixin linearText($size, $start, $end) {
+  color: transparent;
+  font-size: $size;
+  background-image: linear-gradient(to bottom, $start 0%, $end 100%);
+  background-clip: text;
+}
+
+@mixin clipPath($bg, $size, $type) {
+  background: $bg;
+  @if $type == 1 {
+    clip-path: polygon($size 0, 100% 0, 100% 100%, 0 100%, 0 $size);
+  }
+
+  @if $type == 2 {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - $size), calc(100% - $size) 100%, 0 100%);
+  }
+
+  @if $type == 3 {
+    clip-path: polygon($size 0, 100% 0, 100% calc(100% - $size), calc(100% - $size) 100%, 0 100%, 0 $size);
+  }
+}
+
+@mixin clipBorder($bg, $size, $border) {
+  background: $bg;
+  clip-path: polygon(
+    0 $size,
+    $size 0,
+    100% 0,
+    100% calc(100% - $size),
+    calc(100% - $size) 100%,
+    $border 100%,
+    $border calc(100% - $border),
+    calc(100% - $size - $border) calc(100% - $border),
+    calc(100% - $border) calc(100% - $size - $border),
+    calc(100% - $border) $border,
+    calc($size + $border) $border,
+    $border calc($size + $border),
+    $border 100%,
+    0 100%
+  );
+}
+
+@mixin clipBd($size, $border) {
+  clip-path: polygon(
+    0 $size,
+    $size 0,
+    calc(100% - $size) 0,
+    100% $size,
+    100% calc(100% - $size),
+    calc(100% - $size) 100%,
+    20% 100%,
+    20% calc(100% - $border),
+    calc(100% - $size - $border + 1px) calc(100% - $border),
+    calc(100% - $border) calc(100% - $size - $border + 1px),
+    calc(100% - $border) calc($size + $border - 1px),
+    calc(100% - $border - $size + 1px) $border,
+    calc($size + $border - 1px) $border,
+    $border calc($size + $border - 1px),
+    $border calc(100% - $size - $border + 1px),
+    calc($size + $border - 1px) calc(100% - $border),
+    20% calc(100% - $border),
+    20% 100%,
+    $size 100%,
+    0 calc(100% - $size)
+  );
+}
+
+// 滚动条 $width 轨道宽度 | $width 轨道颜色 | $width 轨道进度条颜色
+@mixin scrollBar($width, $trackColor, $barcolor) {
+  &::-webkit-scrollbar-track-piece {
+    background: $trackColor;
+    border-radius: $width;
+  }
+
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+    border-radius: $width;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $barcolor;
+    border-radius: $width;
+  }
+}
+
+// 图片布局
+// $height 图片高度 | $width 图片宽度 | $position 图片定位
+@mixin image($height, $width, $position) {
+  padding-bottom: ptr($height, $width);
+  position: $position;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// 表格样式重置
+@mixin resetTableStyle() {
+  :deep(.el-table) {
+    .el-table__header {
+      height: rem(80);
+      .head {
+        display: inline-block;
+        font-size: rem(24);
+        font-weight: 400;
+        line-height: rem(30);
+        padding-top: rem(4);
+      }
+    }
+    .el-table__body {
+      tr {
+        height: rem(80);
+        td {
+        }
+        .cell {
+          // white-space: normal;
+          line-height: rem(30);
+          font-size: rem(24);
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}

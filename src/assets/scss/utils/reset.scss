@@ -1,0 +1,366 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  word-break: break-all;
+}
+
+html,
+body {
+  margin: 0;
+  font: normal 16px/1.5 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', \5fae\8f6f\96c5\9ed1, tahoma, simsun, \5b8b\4f53;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  height: 100%;
+  background-color: #f0f5f9;
+}
+
+input,
+button,
+textarea,
+select {
+  font-size: inherit;
+  font-family: inherit;
+  vertical-align: middle;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-weight: normal;
+}
+
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+i,
+em,
+address {
+  font-style: normal;
+}
+
+textarea {
+  font-family: 'Microsoft Yahei';
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  border: none;
+  outline: none;
+  max-width: 100%;
+}
+
+h1 {
+  font-size: 200%;
+}
+
+h2 {
+  font-size: 150%;
+}
+
+h3 {
+  font-size: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+i,
+em {
+  font-style: normal;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  text-indent: inherit;
+  border-collapse: collapse;
+}
+
+:focus {
+  outline: none;
+}
+
+.amap-logo {
+  display: none !important;
+}
+
+.amap-copyright {
+  display: none !important;
+}
+
+[class*='lvfont-'] {
+  font-family: 'lvfont' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// @include gridCalc(24, rem(15));
+
+.mt20 {
+  margin-top: rem(20);
+}
+
+.lv-description {
+  &.el-descriptions {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px 20px 8px;
+
+    &:last-child {
+      margin-bottom: 10px;
+    }
+  }
+
+  .el-descriptions__body {
+    background: transparent;
+  }
+}
+
+.el-table__body {
+  width: 100%;
+  // 使表格兼容safari，不错位
+  table-layout: fixed !important;
+}
+
+.quota-collapse-title {
+  font-weight: 500;
+  span {
+    font-size: rem(20);
+    font-weight: 400;
+    color: rgba($color: #333, $alpha: 0.4);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  display: none;
+}
+
+.flex{
+  display:flex;
+}
+.flex-bt-c{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-c{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-ac{
+  display: flex;
+  align-items: center;
+}
+.flex-cm-c{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.pinkTable{
+  position:relative;
+  // background: linear-gradient(180deg, rgba(255, 210, 200, 0.5) 0.51%, rgba(217, 217, 217, 0) 111.03%);
+  // th.el-table__cell, tr, td{
+  //   background: transparent!important;
+  // }
+  &::before{
+    content: '';
+    width:100%;
+    height:100%!important;
+    position:absolute;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    background: linear-gradient(180deg, #FFD2C8 0.51%, rgba(217, 217, 217, 0) 111.03%);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  th.el-table__cell:first-child{
+    color:#D84B42;
+  }
+  .el-table__body-wrapper:before{
+    content: '';
+    position: absolute;
+    width: rem(66);
+    height: rem(89);
+    left: rem(-33);
+    bottom: rem(-29);
+    background: #D84244;
+    opacity: 0.1;
+    border-radius: 50%;
+    z-index:1;
+  }
+  .el-table__body-wrapper:after{
+    content: '';
+    position: absolute;
+    width: rem(33);
+    height: rem(44);
+    left: rem(14);
+    top: auto;
+    bottom: rem(-26);
+    background: #D84244;
+    opacity: 0.1;
+    border-radius: 50%;
+  }
+}
+
+.grayTable{
+  position:relative;
+  // background: linear-gradient(180deg, rgba(30, 65, 130, 0.15) 0%, rgba(30, 65, 130, 0) 111.16%);
+  // th.el-table__cell, tr, td{
+  //   background: transparent!important;
+  // }
+  &::before{
+    content: '';
+    width:100%;
+    height:100%!important;
+    position:absolute;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    background: linear-gradient(180deg, rgba(30, 65, 130, 0.48) 0%, rgba(30, 65, 130, 0) 99.16%);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  th.el-table__cell:first-child{
+    color:#333333;
+  }
+  .el-table__body-wrapper:before{
+    content: '';
+    position: absolute;
+    width: rem(66);
+    height: rem(89);
+    left: rem(-33);
+    bottom: rem(-29);
+    background: #1E4182;
+    opacity: 0.1;
+    border-radius: 50%;
+    z-index:1;
+  }
+  .el-table__body-wrapper:after{
+    content: '';
+    position: absolute;
+    width: rem(33);
+    height: rem(44);
+    left: rem(14);
+    top: auto;
+    bottom: rem(-26);
+    background: #1E4182;
+    opacity: 0.1;
+    border-radius: 50%;
+  }
+}
+.el-table th.el-table__cell > .cell {
+  white-space: pre-wrap;
+}
+.van-collapse-item{
+  margin-bottom:rem(10);
+}
+.upGreenStatus{
+  color: #30c5aa!important;
+  &.sec{
+    background: #30c5a9!important;
+    color:#fff!important;
+  }
+  &.blue{
+    color: #425bb5!important;
+  }
+}
+.downWarnning{
+  color: #d84b42!important;
+  &.sec{
+    background: #d84b42!important;
+    color:#fff!important;
+  }
+  &.blue{
+    color: #425bb5!important;
+  }
+  .lvfont-arrow-up-filling, .textRatio {
+    transform: rotate(180deg);
+  }
+}
+.custom-tooltip-view{
+  display: flex;
+  .left{
+    display: flex;
+    flex-direction: column;
+    width:rem(180);
+    .tooltip-data{
+      display: block;
+      width:100%;
+      text-align: center;
+      font-weight: 600;
+      font-size: rem(42);
+      line-height: rem(60);
+      padding-left:0;
+      padding-right:rem(20);
+    }
+    .top{
+      display: flex;
+      align-items: center;
+      height: rem(36);
+    }
+  }
+  .right{
+    flex:1;
+    .tooltip-items{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .tooltip-item{
+        margin-right:0;
+
+      }
+    }
+  }
+  .tooltip-items{
+    .tooltip-item{
+      margin-bottom:rem(20);
+    }
+  }
+  .tooltip-name{
+    padding-left:rem(6)!important;
+    font-size: rem(24)!important;
+    line-height: rem(24)!important;
+  }
+  .lvfont-reac{
+    display: inline-block;
+    width:rem(20);
+    height:rem(7);
+    // vertical-align: middle;
+  }
+  .iconfont{
+    font-size:rem(16)!important;
+  }
+}

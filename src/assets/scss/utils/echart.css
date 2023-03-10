@@ -1,0 +1,99 @@
+@charset "UTF-8";
+/*
+ * @Author: 刘雪亮 745375757@qq.com
+ * @Date: 2022-12-19 18:09:17
+ * @LastEditors: 刘雪亮 745375757@qq.com
+ * @LastEditTime: 2023-01-14 19:48:09
+ * @FilePath: \杭州绿城\greentown-wap\src\assets\scss\utils\echart.css
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+.echarts-tooltip {
+  z-index: 10 !important;
+}
+
+.echarts-tooltip .tooltip-view {
+  max-width: rem(700);
+  min-width: rem(500);
+  background: white;
+  backdrop-filter: blur(10px);
+  border-radius: rem(12);
+}
+
+.echarts-tooltip .tooltip-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.echarts-tooltip .tooltip-item {
+  display: flex;
+  align-items: center;
+  margin-right: rem(20);
+  height: rem(36);
+  padding-left: rem(6);
+}
+
+.echarts-tooltip .tooltip-name {
+  white-space: nowrap;
+  padding-left: rem(10);
+  font-size: rem(24);
+  line-height: rem(30);
+  font-weight: 400;
+  color: rgba(51, 51, 51, 0.6);
+}
+
+.echarts-tooltip .tooltip-data {
+  white-space: nowrap;
+  padding-left: rem(10);
+  font-weight: 500;
+  font-size: rem(28);
+  line-height: rem(30);
+  color: rgba(51, 51, 51, 0.8);
+}
+
+.echarts-tooltip .iconfont {
+  font-size: rem(22);
+}
+
+.echarts-tooltip .tooltip-icon.line {
+  height: rem(4);
+  width: rem(18);
+  border-radius: rem(4);
+}
+
+.tooltip-cash {
+  width: rem(300);
+  /* height: rem(100); */
+  padding: rem(20);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
+  border-radius: rem(8);
+  position: absolute;
+  left: rem(-150);
+  top: rem(-150);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tooltip-cash .tooltip-text {
+  width: 100%;
+  line-height: rem(30);
+  font-size: rem(20);
+  font-weight: 400;
+}
+
+.tooltip-cash .tooltip-text span {
+  color: #333;
+}
+
+.tooltip-cash .tooltip-dot {
+  width: rem(20);
+  height: rem(20);
+  border-radius: 50%;
+  border: 2px solid #3971e2;
+  background: #fff;
+  position: absolute;
+  left: rem(145);
+  bottom: rem(-55);
+}
